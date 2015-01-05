@@ -12,11 +12,13 @@ from phasecong import phasecong
 from phasecongmono import phasecongmono
 from phasesym import phasesym
 from phasesymmono import phasesymmono
+from monofilt import monofilt
 
 __all__ = [	'phasesym',
 		'phasesymmono',
 		'phasecong',
-		'phasecongmono'
+		'phasecongmono',
+                'monofilt',
 				]
 
 __doc__ = \
