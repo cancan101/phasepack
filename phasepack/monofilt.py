@@ -5,9 +5,19 @@ from phasepack.tools import fft2, ifft2
 
 
 def monofilt(im, nscale, minWaveLength, mult, sigmaOnf, orientWrap=None):
+    if im.dtype not in ['float32', 'float64']:
+        im = np.float64(im)
+        imgdtype = 'float64'
+    else:
+        imgdtype = im.dtype
+
     # Generate horizontal and vertical frequency grids that vary from
     # -0.5 to 0.5 
     radius, u1, u2 = filtergrid(*im.shape)
+
+    radius = radius.astype(imgdtype)
+    u1 = u1.astype(imgdtype)
+    u2 = u2.astype(imgdtype)
 
     # Get rid of the 0 radius value in the middle (at top left corner after
     # fftshifting) so that taking the log of the radius, or dividing by the
